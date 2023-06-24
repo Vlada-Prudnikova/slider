@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="slider-container">
+      <button id="prevButton" disabled>Prev</button>
+      <img src="img-1.jpeg" alt="Image 1" class="slide" />
+      <img src="img-2.jpeg" alt="Image 2" class="slide" />
+      <img src="img-3.webp" alt="Image 3" class="slide" />
+      <button id="nextButton">Next</button>
+    </div>
+    <script>
+      let currentSlide = 0;
+      let slides = document.getElementsByClassName("slide");
+      let prevButton = document.getElementById("prevButton");
+      let nextButton = document.getElementById("nextButton");
+
+      function showSlide() {
+        for (let i = 0; i < slides.length; i++) {
+          if (i === currentSlide) {
+            slides[i].style.display = "block";
+          } else {
+            slides[i].style.display = "none";
+          }
+        }
+
+        updateButtonState();
+      }
+
+      function nextSlide() {
+        currentSlide++;
+        if (currentSlide >= slides.length - 1) {
+          currentSlide = slides.length - 1;
+        }
+        showSlide();
+      }
+
+      function prevSlide() {
+        currentSlide--;
+        if (currentSlide <= 0) {
+          currentSlide = 0;
+        }
+        showSlide();
+      }
+
+      function updateButtonState() {
+        if (currentSlide === 0) {
+          prevButton.disabled = true;
+        } else {
+          prevButton.disabled = false;
+        }
+
+        if (currentSlide === slides.length - 1) {
+          nextButton.disabled = true;
+        } else {
+          nextButton.disabled = false;
+        }
+      }
+
+      prevButton.addEventListener("click", prevSlide);
+      nextButton.addEventListener("click", nextSlide);
+
+      showSlide();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+.slider-container {
+  position: relative;
+  background-color: rgb(156, 65, 65);
+}
+
+.slide {
+  display: none;
+  max-width: 50%;
+  height: auto;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#prevButton {
+  left: 10px;
+  background-color: rgb(167, 137, 195);
+}
+
+#nextButton {
+  right: 10px;
+  background-color: rgb(174, 143, 203);
+}
